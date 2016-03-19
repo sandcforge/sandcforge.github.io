@@ -110,7 +110,6 @@
 	          component: _reactRouter.Link,
 	          icon: 'info',
 	          title: '关于',
-	          badge: '404',
 	          selected: params.page === 'about',
 	          to: '/about'
 	        })
@@ -31411,7 +31410,7 @@
 	        _react2.default.createElement(
 	          'h2',
 	          null,
-	          '2015 SandCForge 版权所有'
+	          '2016 SandCForge @ 版权所有'
 	        )
 	      )
 	    );
