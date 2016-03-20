@@ -31404,6 +31404,10 @@
 	    return _react2.default.createElement(
 	      _amazeuiTouch.Container,
 	      this.props,
+	      _react2.default.createElement(_amazeuiTouch.NavBar, {
+	        title: '关于',
+	        amStyle: 'primary'
+	      }),
 	      _react2.default.createElement(
 	        _amazeuiTouch.Group,
 	        null,
