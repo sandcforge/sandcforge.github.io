@@ -31157,7 +31157,19 @@
 	      transition: 'rfr'
 	    };
 	  },
+	  getInitialState: function getInitialState() {
+	    return { like: _Data2.default.map(function (currentPage, index) {
+	        return currentPage.like;
+	      }) };
+	  },
+	  handleLikeClick: function handleLikeClick(idx) {
+	    var copyLike = this.state.like;
+	    copyLike[idx] = copyLike[idx] + 1;
+	    this.setState({ like: copyLike });
+	  },
 	  renderItems: function renderItems() {
+	    var _this = this;
+
 	    return _Data2.default.map(function (currentPage, index) {
 
 	      var header = _react2.default.createElement(
@@ -31170,37 +31182,35 @@
 	        )
 	      );
 
+	      //let copyLike =
 	      var footer = _react2.default.createElement(
 	        _amazeuiTouch.Card.Child,
 	        { role: 'footer' },
 	        _react2.default.createElement(
 	          'a',
-	          null,
-	          '喜欢'
+	          { onClick: _this.handleLikeClick.bind(_this, index) },
+	          '喜欢 ',
+	          _this.state.like[index]
 	        ),
 	        _react2.default.createElement(
-	          'a',
-	          null,
-	          '评论'
-	        ),
-	        _react2.default.createElement(
-	          'a',
-	          null,
-	          '展开'
+	          _reactRouter.Link,
+	          { to: '/pages/' + String(index) },
+	          _react2.default.createElement(
+	            'a',
+	            null,
+	            '展开'
+	          )
 	        )
 	      );
+
 	      return _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: '/pages/' + String(index) },
-	        _react2.default.createElement(
-	          _amazeuiTouch.Card,
-	          {
-	            header: header,
-	            footer: footer,
-	            key: index
-	          },
-	          currentPage.coverSummary
-	        )
+	        _amazeuiTouch.Card,
+	        {
+	          header: header,
+	          footer: footer,
+	          key: index
+	        },
+	        currentPage.coverSummary
 	      );
 	    });
 	  },
@@ -31244,6 +31254,7 @@
 	var pageData = [{
 	  index: 0,
 	  route: 'page1',
+	  like: 1,
 	  title: '我思念的城市',
 	  coverImage: 'http://s.amazeui.org/media/i/demos/bing-1.jpg',
 	  coverSummary: _react2.default.createElement(
@@ -31279,6 +31290,7 @@
 	}, {
 	  index: 1,
 	  route: 'page2',
+	  like: 2,
 	  title: '我思念的城市2',
 	  coverImage: 'http://s.amazeui.org/media/i/demos/bing-2.jpg',
 	  coverSummary: _react2.default.createElement(
